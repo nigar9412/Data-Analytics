@@ -1,28 +1,113 @@
 {
  "cells": [
   {
+   "cell_type": "markdown",
+   "id": "8699b66e",
+   "metadata": {
+    "_cell_guid": "b516acb0-e9b9-4b86-a6f2-7699ad524a2f",
+    "_uuid": "4dff2e8e-39d8-49a8-80b2-0ea314b0c517",
+    "papermill": {
+     "duration": 0.011526,
+     "end_time": "2024-03-13T05:54:54.902947",
+     "exception": false,
+     "start_time": "2024-03-13T05:54:54.891421",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "# Introduction\n",
+    "\n",
+    "Cyclistic is a fictional bike-sharing company located in Chicago. In this scenario I am a junior data analyst working for the Marketing team at Cyclistic. One of the key stakeholders believes that the company's future success depends on maximizing the number of annual memberships. My team's goal is to understand how casual riders and annual members use Cyclistic differently. My team will develop a new marketing strategy to convert casual riders into annual members. This will be done upon approval of my recommendations for the company which should be backed up with compelling data insights and professional data visualizations."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2f2338a4",
+   "metadata": {
+    "_cell_guid": "aa1d2aef-5317-4e26-babd-dd45cd0cbf2e",
+    "_uuid": "007f9144-2cc5-4091-b0d2-e3ae3e302831",
+    "papermill": {
+     "duration": 0.011077,
+     "end_time": "2024-03-13T05:54:54.925073",
+     "exception": false,
+     "start_time": "2024-03-13T05:54:54.913996",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "# Step 1: Ask\n",
+    "Key stages:\n",
+    "\n",
+    "**1.Identifying the business task**\n",
+    "\n",
+    "In order to achieve a set clear goal of designing a new marketing strategy, first of all I and my team need to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics.\n",
+    "\n",
+    "**2.Considering key stakeholders**\n",
+    "\n",
+    "The main stakeholders are: Lily Moreno, the marketing director; Cyclistic marketing analytics team,responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy; and Cyclistic executive team, who will decide whether to approve the recommended marketing program."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "67d7d12c",
+   "metadata": {
+    "_cell_guid": "92f49a99-8117-4719-ab0d-68daa22623fa",
+    "_uuid": "34463a7c-0c41-4257-959c-c4a9dbfd4a5c",
+    "papermill": {
+     "duration": 0.011686,
+     "end_time": "2024-03-13T05:54:54.948383",
+     "exception": false,
+     "start_time": "2024-03-13T05:54:54.936697",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "# Step 2: Prepare\n",
+    "\n",
+    "Key stages:\n",
+    "\n",
+    "**1. Downloading data and storing it appropriately**\n",
+    "\n",
+    "Historical trip data to be analyzed is downloaded from [here](https://divvy-tripdata.s3.amazonaws.com/index.html) and stored locally in my Desktop. The selected range includes data from Divvy_Trips_2019_Q2 to Divvy_Trips_2020_Q1. (Note: The datasets have a different name because Cyclistic is a fictional company. For the purposes of this case study, the datasets are appropriate. The data has been made available by Motivate International Inc. under [this](https://divvybikes.com/data-license-agreement) license).\n",
+    "\n",
+    "**2. Identifying how it’s organized**\n",
+    "\n",
+    "Data is organized by compressed folders, folder names are self-explanatory and clear. Some of the folders are organized by quarters, others - by months. When it comes to the content of the files, columns'names might differ, e.g. **trip_id** in Divvy_Trips_2019_Q4 versus **ride_id** in Divvy_Trips_2020_Q1. Furthermore, there are fields with no/missing data, as well as columns containing redundant data.\n",
+    "\n",
+    "**3. Determining the credibility of the data**\n",
+    "\n",
+    "Data comes from a reliable source, and it is made publicly available under the [license agreement](https://divvybikes.com/data-license-agreement). The information collected belongs to real users of Divvy, which is a bicycle sharing service operated by Lyft Bikes and Scooters, LLC (“Bikeshare”)  in the city of Chicago (“City”). The City permits Bikeshare to make certain Divvy system data owned by the City available to the public, subject to the terms and conditions of the License Agreement.\n",
+    "\n",
+    "**4. Sorting and filtering the data**\n",
+    "\n",
+    "In order to start working with data, I install and load required packages."
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "e1c74f75",
+   "id": "60580bfb",
    "metadata": {
-    "_cell_guid": "5f56cba9-6e37-4b31-97b6-229c1d001b50",
-    "_execution_state": "idle",
-    "_uuid": "f2caaa25-6cc0-48b5-b74d-0ef5ab2fe521",
+    "_cell_guid": "632afe68-3564-4532-b7c3-102e63053233",
+    "_uuid": "f0840fc6-a0c7-4f98-ad12-82b89169449a",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:26.551702Z",
-     "iopub.status.busy": "2024-03-12T03:33:26.549116Z",
-     "iopub.status.idle": "2024-03-12T03:33:27.999155Z",
-     "shell.execute_reply": "2024-03-12T03:33:27.996777Z"
+     "iopub.execute_input": "2024-03-13T05:54:54.975126Z",
+     "iopub.status.busy": "2024-03-13T05:54:54.972425Z",
+     "iopub.status.idle": "2024-03-13T05:54:56.262673Z",
+     "shell.execute_reply": "2024-03-13T05:54:56.261104Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 1.477156,
-     "end_time": "2024-03-12T03:33:28.002836",
+     "duration": 1.30515,
+     "end_time": "2024-03-13T05:54:56.264601",
      "exception": false,
-     "start_time": "2024-03-12T03:33:26.525680",
+     "start_time": "2024-03-13T05:54:54.959451",
      "status": "completed"
     },
     "tags": []
@@ -41,161 +126,7 @@
       "── \u001b[1mConflicts\u001b[22m ────────────────────────────────────────── tidyverse_conflicts() ──\n",
       "\u001b[31m✖\u001b[39m \u001b[34mdplyr\u001b[39m::\u001b[32mfilter()\u001b[39m masks \u001b[34mstats\u001b[39m::filter()\n",
       "\u001b[31m✖\u001b[39m \u001b[34mdplyr\u001b[39m::\u001b[32mlag()\u001b[39m    masks \u001b[34mstats\u001b[39m::lag()\n",
-      "\u001b[36mℹ\u001b[39m Use the conflicted package (\u001b[3m\u001b[34m<http://conflicted.r-lib.org/>\u001b[39m\u001b[23m) to force all conflicts to become errors\n"
-     ]
-    },
-    {
-     "data": {
-      "text/html": [
-       "'divvy-datasets'"
-      ],
-      "text/latex": [
-       "'divvy-datasets'"
-      ],
-      "text/markdown": [
-       "'divvy-datasets'"
-      ],
-      "text/plain": [
-       "[1] \"divvy-datasets\""
-      ]
-     },
-     "metadata": {},
-     "output_type": "display_data"
-    }
-   ],
-   "source": [
-    "# This R environment comes with many helpful analytics packages installed\n",
-    "# It is defined by the kaggle/rstats Docker image: https://github.com/kaggle/docker-rstats\n",
-    "# For example, here's a helpful package to load\n",
-    "\n",
-    "library(tidyverse) # metapackage of all tidyverse packages\n",
-    "\n",
-    "# Input data files are available in the read-only \"../input/\" directory\n",
-    "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
-    "\n",
-    "list.files(path = \"../input\")\n",
-    "\n",
-    "# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using \"Save & Run All\" \n",
-    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "b1fdf7a8",
-   "metadata": {
-    "_cell_guid": "b516acb0-e9b9-4b86-a6f2-7699ad524a2f",
-    "_uuid": "4dff2e8e-39d8-49a8-80b2-0ea314b0c517",
-    "papermill": {
-     "duration": 0.01989,
-     "end_time": "2024-03-12T03:33:28.043613",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:28.023723",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "source": [
-    "# Introduction\n",
-    "\n",
-    "Cyclistic is a fictional bike-sharing company located in Chicago. In this scenario I am a junior data analyst working for the Marketing team at Cyclistic. One of the key stakeholders believes that the company's future success depends on maximizing the number of annual memberships. My team's goal is to understand how casual riders and annual members use Cyclistic differently. My team will develop a new marketing startegy to convert casual riders into annual members. This will be done upon approval of my recommendations for the company which should be backed up with compelling data insights and professional data visualizations."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "9761d408",
-   "metadata": {
-    "_cell_guid": "aa1d2aef-5317-4e26-babd-dd45cd0cbf2e",
-    "_uuid": "007f9144-2cc5-4091-b0d2-e3ae3e302831",
-    "papermill": {
-     "duration": 0.022228,
-     "end_time": "2024-03-12T03:33:28.086693",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:28.064465",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "source": [
-    "# Step 1: Ask\n",
-    "Key tasks:\n",
-    "\n",
-    "**1.Identify the business task**\n",
-    "\n",
-    "In order to achieve a set clear goal of designing a new marketing strategy, first of all I and my team need to better understand how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics.\n",
-    "\n",
-    "**2.Consider key stakeholders**\n",
-    "\n",
-    "The main stakeholders are: Lily Moreno, the marketing director; Cyclistic marketing analytics team,responsible for collecting, analyzing, and reporting data that helps guide Cyclistic marketing strategy; and Cyclistic executive team, who will decide whether to approve the recommended marketing program."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "cab795e4",
-   "metadata": {
-    "_cell_guid": "92f49a99-8117-4719-ab0d-68daa22623fa",
-    "_uuid": "34463a7c-0c41-4257-959c-c4a9dbfd4a5c",
-    "papermill": {
-     "duration": 0.02049,
-     "end_time": "2024-03-12T03:33:28.127011",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:28.106521",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "source": [
-    "# Step 2: Prepare\n",
-    "\n",
-    "Key tasks:\n",
-    "\n",
-    "**1. Download data and store it appropriately**\n",
-    "\n",
-    "Historical trip data to be analyzed is downloaded from [here](https://divvy-tripdata.s3.amazonaws.com/index.html) and stored locally in my Desktop. The selected range includes data from Divvy_Trips_2019_Q2 to Divvy_Trips_2020_Q1. (Note: The datasets have a different name because Cyclistic is a fictional company. For the purposes of this case study, the datasets are appropriate. The data has been made available by Motivate International Inc. under [this](https://divvybikes.com/data-license-agreement) license.)\n",
-    "\n",
-    "**2. Identify how it’s organized**\n",
-    "\n",
-    "Data is organized by compressed folders, folder names are self-explanatory and clear. Some of the folders are organized by quarters, others - by months. When it comes to the content of the files, columns'names might differ, e.g. **trip_id** in Divvy_Trips_2019_Q4 versus **ride_id** in Divvy_Trips_2020_Q1. Furthermore, there are fields with no/missing data, as well as columns containing redundant data.\n",
-    "\n",
-    "**3. Determine the credibility of the data**\n",
-    "\n",
-    "Data comes from a reliable source, and it is made publicly available under the [license agreement](https://divvybikes.com/data-license-agreement). The information collected belongs to real users of Divvy, which is a bicycle sharing service operated by Lyft Bikes and Scooters, LLC (“Bikeshare”)  in the city of Chicago (“City”). The City permits Bikeshare to make certain Divvy system data owned by the City available to the public, subject to the terms and conditions of the License Agreement.\n",
-    "\n",
-    "**4. Sort and filter the data**\n",
-    "\n",
-    "In order to start working with data, I install and load required packages."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "id": "880dd63c",
-   "metadata": {
-    "_cell_guid": "632afe68-3564-4532-b7c3-102e63053233",
-    "_uuid": "f0840fc6-a0c7-4f98-ad12-82b89169449a",
-    "collapsed": false,
-    "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:28.208295Z",
-     "iopub.status.busy": "2024-03-12T03:33:28.170194Z",
-     "iopub.status.idle": "2024-03-12T03:33:28.560002Z",
-     "shell.execute_reply": "2024-03-12T03:33:28.557682Z"
-    },
-    "jupyter": {
-     "outputs_hidden": false
-    },
-    "papermill": {
-     "duration": 0.415359,
-     "end_time": "2024-03-12T03:33:28.562917",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:28.147558",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
+      "\u001b[36mℹ\u001b[39m Use the conflicted package (\u001b[3m\u001b[34m<http://conflicted.r-lib.org/>\u001b[39m\u001b[23m) to force all conflicts to become errors\n",
       "\u001b[1m\u001b[22m\u001b[90m[conflicted]\u001b[39m Will prefer \u001b[1m\u001b[34mdplyr\u001b[39m\u001b[22m::filter over any other package.\n",
       "\u001b[1m\u001b[22m\u001b[90m[conflicted]\u001b[39m Will prefer \u001b[1m\u001b[34mdplyr\u001b[39m\u001b[22m::lag over any other package.\n"
      ]
@@ -213,23 +144,23 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
-   "id": "51f67c5d",
+   "execution_count": 2,
+   "id": "afbc8734",
    "metadata": {
     "_cell_guid": "2fdb590d-d540-47fd-b9ec-7907184a6ea0",
-    "_kg_hide-output": false,
+    "_kg_hide-output": true,
     "_uuid": "afa561e1-e2b6-41e4-b904-8fdba1f9d216",
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:28.608600Z",
-     "iopub.status.busy": "2024-03-12T03:33:28.605825Z",
-     "iopub.status.idle": "2024-03-12T03:33:40.607173Z",
-     "shell.execute_reply": "2024-03-12T03:33:40.604912Z"
+     "iopub.execute_input": "2024-03-13T05:54:56.312473Z",
+     "iopub.status.busy": "2024-03-13T05:54:56.289140Z",
+     "iopub.status.idle": "2024-03-13T05:55:04.826685Z",
+     "shell.execute_reply": "2024-03-13T05:55:04.825033Z"
     },
     "papermill": {
-     "duration": 12.027904,
-     "end_time": "2024-03-12T03:33:40.611069",
+     "duration": 8.553383,
+     "end_time": "2024-03-13T05:55:04.829598",
      "exception": false,
-     "start_time": "2024-03-12T03:33:28.583165",
+     "start_time": "2024-03-13T05:54:56.276215",
      "status": "completed"
     },
     "tags": []
@@ -292,27 +223,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
-   "id": "5391844c",
+   "execution_count": 3,
+   "id": "96cd6b5b",
    "metadata": {
     "_cell_guid": "977007f8-e0d0-490b-948b-2dcc8be53de6",
     "_kg_hide-output": false,
     "_uuid": "320375f5-f2c8-4cb5-8b52-74a547d1fdc3",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:40.657745Z",
-     "iopub.status.busy": "2024-03-12T03:33:40.655668Z",
-     "iopub.status.idle": "2024-03-12T03:33:40.679518Z",
-     "shell.execute_reply": "2024-03-12T03:33:40.677237Z"
+     "iopub.execute_input": "2024-03-13T05:55:04.856570Z",
+     "iopub.status.busy": "2024-03-13T05:55:04.855197Z",
+     "iopub.status.idle": "2024-03-13T05:55:04.874185Z",
+     "shell.execute_reply": "2024-03-13T05:55:04.872198Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.050124,
-     "end_time": "2024-03-12T03:33:40.682480",
+     "duration": 0.035113,
+     "end_time": "2024-03-13T05:55:04.876532",
      "exception": false,
-     "start_time": "2024-03-12T03:33:40.632356",
+     "start_time": "2024-03-13T05:55:04.841419",
      "status": "completed"
     },
     "tags": []
@@ -389,27 +320,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
-   "id": "47a1f829",
+   "execution_count": 4,
+   "id": "a0a58cb8",
    "metadata": {
     "_cell_guid": "442bfd36-179e-4047-b73d-ffbee3265c18",
     "_kg_hide-output": false,
     "_uuid": "12a01942-ad13-4b51-9527-a7de61b66e40",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:40.731078Z",
-     "iopub.status.busy": "2024-03-12T03:33:40.728945Z",
-     "iopub.status.idle": "2024-03-12T03:33:40.750837Z",
-     "shell.execute_reply": "2024-03-12T03:33:40.748677Z"
+     "iopub.execute_input": "2024-03-13T05:55:04.903743Z",
+     "iopub.status.busy": "2024-03-13T05:55:04.902439Z",
+     "iopub.status.idle": "2024-03-13T05:55:04.918700Z",
+     "shell.execute_reply": "2024-03-13T05:55:04.916598Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.048493,
-     "end_time": "2024-03-12T03:33:40.753692",
+     "duration": 0.032384,
+     "end_time": "2024-03-13T05:55:04.921102",
      "exception": false,
-     "start_time": "2024-03-12T03:33:40.705199",
+     "start_time": "2024-03-13T05:55:04.888718",
      "status": "completed"
     },
     "tags": []
@@ -474,26 +405,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
-   "id": "3d6edbec",
+   "execution_count": 5,
+   "id": "b6d32049",
    "metadata": {
     "_cell_guid": "3ba737c4-eb1f-45a4-bb68-fc8887ecf0b8",
     "_uuid": "413988c2-08b4-4274-922f-913b3d23ae9f",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:40.803174Z",
-     "iopub.status.busy": "2024-03-12T03:33:40.800972Z",
-     "iopub.status.idle": "2024-03-12T03:33:40.992198Z",
-     "shell.execute_reply": "2024-03-12T03:33:40.990010Z"
+     "iopub.execute_input": "2024-03-13T05:55:04.949397Z",
+     "iopub.status.busy": "2024-03-13T05:55:04.948025Z",
+     "iopub.status.idle": "2024-03-13T05:55:05.076974Z",
+     "shell.execute_reply": "2024-03-13T05:55:05.075138Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.218385,
-     "end_time": "2024-03-12T03:33:40.995088",
+     "duration": 0.145532,
+     "end_time": "2024-03-13T05:55:05.079107",
      "exception": false,
-     "start_time": "2024-03-12T03:33:40.776703",
+     "start_time": "2024-03-13T05:55:04.933575",
      "status": "completed"
     },
     "tags": []
@@ -558,26 +489,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
-   "id": "f6ff711f",
+   "execution_count": 6,
+   "id": "0d1f7ec1",
    "metadata": {
     "_cell_guid": "a58b9eee-de9a-4e64-9e32-0b0f5198188c",
     "_uuid": "560018ce-5cdd-4752-992c-35c52dca1fbe",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:41.046240Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.043992Z",
-     "iopub.status.idle": "2024-03-12T03:33:41.067144Z",
-     "shell.execute_reply": "2024-03-12T03:33:41.065100Z"
+     "iopub.execute_input": "2024-03-13T05:55:05.105942Z",
+     "iopub.status.busy": "2024-03-13T05:55:05.104747Z",
+     "iopub.status.idle": "2024-03-13T05:55:05.119124Z",
+     "shell.execute_reply": "2024-03-13T05:55:05.117301Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.052537,
-     "end_time": "2024-03-12T03:33:41.070154",
+     "duration": 0.03071,
+     "end_time": "2024-03-13T05:55:05.121849",
      "exception": false,
-     "start_time": "2024-03-12T03:33:41.017617",
+     "start_time": "2024-03-13T05:55:05.091139",
      "status": "completed"
     },
     "tags": []
@@ -645,27 +576,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
-   "id": "6bdbeaf4",
+   "execution_count": 7,
+   "id": "90e43184",
    "metadata": {
     "_cell_guid": "3e3ffe41-5c51-429e-ad69-f7b5787d25a6",
     "_kg_hide-output": false,
     "_uuid": "820147ae-2eda-4161-8efc-2e41e7aac74c",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:41.119601Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.117727Z",
-     "iopub.status.idle": "2024-03-12T03:33:41.224573Z",
-     "shell.execute_reply": "2024-03-12T03:33:41.220889Z"
+     "iopub.execute_input": "2024-03-13T05:55:05.150949Z",
+     "iopub.status.busy": "2024-03-13T05:55:05.149507Z",
+     "iopub.status.idle": "2024-03-13T05:55:05.483058Z",
+     "shell.execute_reply": "2024-03-13T05:55:05.481702Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.136191,
-     "end_time": "2024-03-12T03:33:41.228836",
+     "duration": 0.350159,
+     "end_time": "2024-03-13T05:55:05.484981",
      "exception": false,
-     "start_time": "2024-03-12T03:33:41.092645",
+     "start_time": "2024-03-13T05:55:05.134822",
      "status": "completed"
     },
     "tags": []
@@ -751,53 +682,7 @@
      },
      "metadata": {},
      "output_type": "display_data"
-    }
-   ],
-   "source": [
-    "# Renaming columns to make them consistent with q1_2020 \n",
-    "\n",
-    "(q2_2019 <-rename(q2_2019,\n",
-    "                 ride_id = `01 - Rental Details Rental ID`,\n",
-    "                 rideable_type = `01 - Rental Details Bike ID`,\n",
-    "                 started_at = `01 - Rental Details Local Start Time`,\n",
-    "                 ended_at = `01 - Rental Details Local End Time`,\n",
-    "                 start_station_name = `03 - Rental Start Station Name`,\n",
-    "                 start_station_id = `03 - Rental Start Station ID`,\n",
-    "                 end_station_name = `02 - Rental End Station Name`,\n",
-    "                 end_station_id = `02 - Rental End Station ID`,\n",
-    "                 member_casual = `User Type`)) %>%\n",
-    "head(6)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 9,
-   "id": "c3fd51e5",
-   "metadata": {
-    "_cell_guid": "9de551c8-35d8-4289-8f2d-78407abed29b",
-    "_kg_hide-input": false,
-    "_kg_hide-output": false,
-    "_uuid": "87fadae8-c3c6-427f-8818-925c3f061615",
-    "collapsed": false,
-    "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:41.289295Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.287420Z",
-     "iopub.status.idle": "2024-03-12T03:33:41.628573Z",
-     "shell.execute_reply": "2024-03-12T03:33:41.626636Z"
     },
-    "jupyter": {
-     "outputs_hidden": false
-    },
-    "papermill": {
-     "duration": 0.369491,
-     "end_time": "2024-03-12T03:33:41.631251",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:41.261760",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "outputs": [
     {
      "data": {
       "text/html": [
@@ -871,50 +756,7 @@
      },
      "metadata": {},
      "output_type": "display_data"
-    }
-   ],
-   "source": [
-    "(q3_2019 <- rename(q3_2019,\n",
-    "                 ride_id = trip_id,\n",
-    "                 rideable_type = bikeid,\n",
-    "                 started_at = start_time,\n",
-    "                 ended_at = end_time,\n",
-    "                 start_station_name = from_station_name,\n",
-    "                 start_station_id = from_station_id,\n",
-    "                 end_station_name = to_station_name,\n",
-    "                 end_station_id = to_station_id,\n",
-    "                 member_casual = usertype)) %>%\n",
-    "head(6)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 10,
-   "id": "16263430",
-   "metadata": {
-    "_cell_guid": "9b60ebb8-87f6-495a-836a-a207d66cc3c1",
-    "_kg_hide-output": false,
-    "_uuid": "90d6a714-089b-4dd3-b77a-ece65df703c0",
-    "collapsed": false,
-    "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:41.681885Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.680040Z",
-     "iopub.status.idle": "2024-03-12T03:33:41.734364Z",
-     "shell.execute_reply": "2024-03-12T03:33:41.732405Z"
     },
-    "jupyter": {
-     "outputs_hidden": false
-    },
-    "papermill": {
-     "duration": 0.083021,
-     "end_time": "2024-03-12T03:33:41.737451",
-     "exception": false,
-     "start_time": "2024-03-12T03:33:41.654430",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "outputs": [
     {
      "data": {
       "text/html": [
@@ -991,6 +833,33 @@
     }
    ],
    "source": [
+    "# Renaming column names to make them consistent with q1_2020 \n",
+    "\n",
+    "(q2_2019 <-rename(q2_2019,\n",
+    "                 ride_id = `01 - Rental Details Rental ID`,\n",
+    "                 rideable_type = `01 - Rental Details Bike ID`,\n",
+    "                 started_at = `01 - Rental Details Local Start Time`,\n",
+    "                 ended_at = `01 - Rental Details Local End Time`,\n",
+    "                 start_station_name = `03 - Rental Start Station Name`,\n",
+    "                 start_station_id = `03 - Rental Start Station ID`,\n",
+    "                 end_station_name = `02 - Rental End Station Name`,\n",
+    "                 end_station_id = `02 - Rental End Station ID`,\n",
+    "                 member_casual = `User Type`)) %>%\n",
+    "head(6)\n",
+    "\n",
+    "\n",
+    "(q3_2019 <- rename(q3_2019,\n",
+    "                 ride_id = trip_id,\n",
+    "                 rideable_type = bikeid,\n",
+    "                 started_at = start_time,\n",
+    "                 ended_at = end_time,\n",
+    "                 start_station_name = from_station_name,\n",
+    "                 start_station_id = from_station_id,\n",
+    "                 end_station_name = to_station_name,\n",
+    "                 end_station_id = to_station_id,\n",
+    "                 member_casual = usertype)) %>%\n",
+    "head(6)\n",
+    "\n",
     "(q4_2019<-rename(q4_2019,\n",
     "                 ride_id=trip_id,\n",
     "                 rideable_type=bikeid,\n",
@@ -1001,32 +870,33 @@
     "                 end_station_name=to_station_name,\n",
     "                 end_station_id=to_station_id,\n",
     "                 member_casual=usertype))%>%\n",
-    "head(6)"
+    "head(6)\n",
+    "\n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
-   "id": "06033d0c",
+   "execution_count": 8,
+   "id": "09ec49fe",
    "metadata": {
     "_cell_guid": "c2f5b234-9bc0-42af-8fcd-62d8c466a2eb",
     "_kg_hide-output": true,
     "_uuid": "2924f27e-8477-4b65-950d-861ee6fd5618",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:41.789680Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.787910Z",
-     "iopub.status.idle": "2024-03-12T03:33:41.944811Z",
-     "shell.execute_reply": "2024-03-12T03:33:41.942504Z"
+     "iopub.execute_input": "2024-03-13T05:55:05.515159Z",
+     "iopub.status.busy": "2024-03-13T05:55:05.513799Z",
+     "iopub.status.idle": "2024-03-13T05:55:05.625287Z",
+     "shell.execute_reply": "2024-03-13T05:55:05.623485Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.186582,
-     "end_time": "2024-03-12T03:33:41.947809",
+     "duration": 0.12824,
+     "end_time": "2024-03-13T05:55:05.627167",
      "exception": false,
-     "start_time": "2024-03-12T03:33:41.761227",
+     "start_time": "2024-03-13T05:55:05.498927",
      "status": "completed"
     },
     "tags": []
@@ -1162,31 +1032,34 @@
     "str(q2_2019)\n",
     "str(q3_2019)\n",
     "str(q4_2019)\n",
-    "str(q1_2020)"
+    "str(q1_2020)\n",
+    "\n",
+    "# During the inspection I have found out that that ride_id and rideable_type \n",
+    "# in q2_2019, q3_2019, q4_2019 are in double format, whereas in q1_2020 they are character"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
-   "id": "168cd286",
+   "execution_count": 9,
+   "id": "44b6af26",
    "metadata": {
     "_cell_guid": "64375e25-2c87-4e4e-9df1-6a122411843e",
     "_uuid": "a2e2801e-3db4-4f5e-bcae-90fdd829cc38",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:42.000893Z",
-     "iopub.status.busy": "2024-03-12T03:33:41.999003Z",
-     "iopub.status.idle": "2024-03-12T03:33:42.041782Z",
-     "shell.execute_reply": "2024-03-12T03:33:42.039461Z"
+     "iopub.execute_input": "2024-03-13T05:55:05.657738Z",
+     "iopub.status.busy": "2024-03-13T05:55:05.656501Z",
+     "iopub.status.idle": "2024-03-13T05:55:05.683571Z",
+     "shell.execute_reply": "2024-03-13T05:55:05.682117Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.073212,
-     "end_time": "2024-03-12T03:33:42.045372",
+     "duration": 0.044292,
+     "end_time": "2024-03-13T05:55:05.685593",
      "exception": false,
-     "start_time": "2024-03-12T03:33:41.972160",
+     "start_time": "2024-03-13T05:55:05.641301",
      "status": "completed"
     },
     "tags": []
@@ -1210,26 +1083,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
-   "id": "46605e5b",
+   "execution_count": 10,
+   "id": "a313ab7c",
    "metadata": {
     "_cell_guid": "ff89aa22-f9d8-416b-9e9c-d0081c0b9e9f",
     "_uuid": "aa9cfe04-728a-4b53-b6b6-3af7b4a53f30",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:42.098679Z",
-     "iopub.status.busy": "2024-03-12T03:33:42.096521Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.306409Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.304205Z"
+     "iopub.execute_input": "2024-03-13T05:55:05.717079Z",
+     "iopub.status.busy": "2024-03-13T05:55:05.715651Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.527827Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.526473Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 17.239924,
-     "end_time": "2024-03-12T03:33:59.309404",
+     "duration": 9.830577,
+     "end_time": "2024-03-13T05:55:15.530069",
      "exception": false,
-     "start_time": "2024-03-12T03:33:42.069480",
+     "start_time": "2024-03-13T05:55:05.699492",
      "status": "completed"
     },
     "tags": []
@@ -1415,26 +1288,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
-   "id": "102634ac",
+   "execution_count": 11,
+   "id": "75376925",
    "metadata": {
     "_cell_guid": "4361c7ef-cc4f-4808-8af8-1f02bc2e34bc",
     "_uuid": "98ef185b-50f6-443b-9415-c6c128adc96b",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.363850Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.361784Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.395028Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.392682Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.562459Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.561051Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.582881Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.581265Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.063806,
-     "end_time": "2024-03-12T03:33:59.397864",
+     "duration": 0.040685,
+     "end_time": "2024-03-13T05:55:15.585253",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.334058",
+     "start_time": "2024-03-13T05:55:15.544568",
      "status": "completed"
     },
     "tags": []
@@ -1442,7 +1315,8 @@
    "outputs": [],
    "source": [
     "# Removing redundant and repetitive fields - lat, long, birthyear, gender fields, as this data was dropped beginning in 2020\n",
-    "# Also removing tripduration field, since not all entries contained this information, and thereby it will be recreated for all entries during process phase\n",
+    "# Also removing tripduration field, since not all entries contained this information. \n",
+    "# Tripduration(ride_length) field will be generated by calculating the difference between end time and start time\n",
     "\n",
     "all_trips <- all_trips %>%  \n",
     "  select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, \n",
@@ -1453,15 +1327,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5dad595e",
+   "id": "727ce5f8",
    "metadata": {
     "_cell_guid": "49b60ce9-a076-4b94-9d90-d901dad74a03",
     "_uuid": "5e6a2a69-33bb-44c9-82b9-84674607765a",
     "papermill": {
-     "duration": 0.025035,
-     "end_time": "2024-03-12T03:33:59.447103",
+     "duration": 0.014101,
+     "end_time": "2024-03-13T05:55:15.614128",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.422068",
+     "start_time": "2024-03-13T05:55:15.600027",
      "status": "completed"
     },
     "tags": []
@@ -1469,33 +1343,33 @@
    "source": [
     "# Step 3: Process\n",
     "\n",
-    "Key tasks:\n",
+    "Key stages:\n",
     "\n",
-    "**1. Check the data for errors.**"
+    "**1. Checking the data for errors**"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
-   "id": "9dc3c024",
+   "execution_count": 12,
+   "id": "1325ab89",
    "metadata": {
     "_cell_guid": "54d3032a-a50b-488e-b8e5-35d5885201e5",
     "_uuid": "21be1dcf-ebe9-4504-a2da-8241a182447b",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.501037Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.499016Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.523060Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.520764Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.646131Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.644813Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.661969Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.659919Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.054457,
-     "end_time": "2024-03-12T03:33:59.525942",
+     "duration": 0.035999,
+     "end_time": "2024-03-13T05:55:15.664282",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.471485",
+     "start_time": "2024-03-13T05:55:15.628283",
      "status": "completed"
     },
     "tags": []
@@ -1555,26 +1429,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
-   "id": "d56afe6c",
+   "execution_count": 13,
+   "id": "49930e97",
    "metadata": {
     "_cell_guid": "41818358-726a-47f3-9572-944ca1f210e4",
     "_uuid": "40e162f4-290b-4eb8-a36b-ba1c06d7edac",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.582192Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.580057Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.606948Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.604569Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.697199Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.695641Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.713273Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.711319Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.058838,
-     "end_time": "2024-03-12T03:33:59.610520",
+     "duration": 0.036793,
+     "end_time": "2024-03-13T05:55:15.715642",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.551682",
+     "start_time": "2024-03-13T05:55:15.678849",
      "status": "completed"
     },
     "tags": []
@@ -1605,26 +1479,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
-   "id": "19be0261",
+   "execution_count": 14,
+   "id": "aef6bead",
    "metadata": {
     "_cell_guid": "d181dad7-2154-43b9-8da8-f6ca7f1c2660",
     "_uuid": "714ccb10-e1ba-408a-8cf9-345c1ed715a0",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.665884Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.663905Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.692048Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.688394Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.748654Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.747155Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.765010Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.762955Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.060073,
-     "end_time": "2024-03-12T03:33:59.695917",
+     "duration": 0.037307,
+     "end_time": "2024-03-13T05:55:15.767762",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.635844",
+     "start_time": "2024-03-13T05:55:15.730455",
      "status": "completed"
     },
     "tags": []
@@ -1666,26 +1540,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
-   "id": "4892c188",
+   "execution_count": 15,
+   "id": "5c4914bc",
    "metadata": {
     "_cell_guid": "b36c1290-db6c-4f3d-a09c-f453427334ee",
     "_uuid": "c4ce6a5f-53eb-4d8d-b694-9acb4f229242",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.753620Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.751241Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.810005Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.807158Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.800694Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.799105Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.833906Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.831891Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.091838,
-     "end_time": "2024-03-12T03:33:59.814070",
+     "duration": 0.053643,
+     "end_time": "2024-03-13T05:55:15.836211",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.722232",
+     "start_time": "2024-03-13T05:55:15.782568",
      "status": "completed"
     },
     "tags": []
@@ -1772,26 +1646,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 19,
-   "id": "fac3844a",
+   "execution_count": 16,
+   "id": "44103785",
    "metadata": {
     "_cell_guid": "3c4dcde7-4dd5-475e-bea2-869b29b71677",
     "_uuid": "899ba3c8-c5ac-4cd0-9971-d7c89e5ff426",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:33:59.930149Z",
-     "iopub.status.busy": "2024-03-12T03:33:59.927491Z",
-     "iopub.status.idle": "2024-03-12T03:33:59.981693Z",
-     "shell.execute_reply": "2024-03-12T03:33:59.978772Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.868373Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.866839Z",
+     "iopub.status.idle": "2024-03-13T05:55:15.898765Z",
+     "shell.execute_reply": "2024-03-13T05:55:15.896783Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.088162,
-     "end_time": "2024-03-12T03:33:59.986290",
+     "duration": 0.050347,
+     "end_time": "2024-03-13T05:55:15.901043",
      "exception": false,
-     "start_time": "2024-03-12T03:33:59.898128",
+     "start_time": "2024-03-13T05:55:15.850696",
      "status": "completed"
     },
     "tags": []
@@ -1820,26 +1694,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
-   "id": "c9c4d8e1",
+   "execution_count": 17,
+   "id": "495daf18",
    "metadata": {
     "_cell_guid": "925b644b-a5ee-47e1-8c3b-4264b87e5559",
     "_uuid": "47aa45dc-c9c0-410a-99a0-8485929f1885",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:00.044727Z",
-     "iopub.status.busy": "2024-03-12T03:34:00.042243Z",
-     "iopub.status.idle": "2024-03-12T03:34:02.397854Z",
-     "shell.execute_reply": "2024-03-12T03:34:02.395505Z"
+     "iopub.execute_input": "2024-03-13T05:55:15.933384Z",
+     "iopub.status.busy": "2024-03-13T05:55:15.931766Z",
+     "iopub.status.idle": "2024-03-13T05:55:17.432299Z",
+     "shell.execute_reply": "2024-03-13T05:55:17.430526Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 2.38849,
-     "end_time": "2024-03-12T03:34:02.401572",
+     "duration": 1.519013,
+     "end_time": "2024-03-13T05:55:17.434545",
      "exception": false,
-     "start_time": "2024-03-12T03:34:00.013082",
+     "start_time": "2024-03-13T05:55:15.915532",
      "status": "completed"
     },
     "tags": []
@@ -1884,15 +1758,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "85f55f37",
+   "id": "fec57dc8",
    "metadata": {
     "_cell_guid": "9742f447-3c5d-43e9-b6a3-63d5b82e30f5",
     "_uuid": "f050df6d-50ff-4118-b033-00c1eda81eca",
     "papermill": {
-     "duration": 0.033407,
-     "end_time": "2024-03-12T03:34:02.474753",
+     "duration": 0.01471,
+     "end_time": "2024-03-13T05:55:17.463997",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.441346",
+     "start_time": "2024-03-13T05:55:17.449287",
      "status": "completed"
     },
     "tags": []
@@ -1905,26 +1779,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
-   "id": "fc99e65f",
+   "execution_count": 18,
+   "id": "6ed8bb69",
    "metadata": {
     "_cell_guid": "4a3cf6ea-6a54-4331-be5f-bbbeeed03c22",
     "_uuid": "1e349633-9844-4a6a-81c3-356e9069f3de",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:02.533985Z",
-     "iopub.status.busy": "2024-03-12T03:34:02.531137Z",
-     "iopub.status.idle": "2024-03-12T03:34:02.643605Z",
-     "shell.execute_reply": "2024-03-12T03:34:02.641583Z"
+     "iopub.execute_input": "2024-03-13T05:55:17.533200Z",
+     "iopub.status.busy": "2024-03-13T05:55:17.531852Z",
+     "iopub.status.idle": "2024-03-13T05:55:17.597156Z",
+     "shell.execute_reply": "2024-03-13T05:55:17.595215Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.144781,
-     "end_time": "2024-03-12T03:34:02.646453",
+     "duration": 0.121062,
+     "end_time": "2024-03-13T05:55:17.600065",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.501672",
+     "start_time": "2024-03-13T05:55:17.479003",
      "status": "completed"
     },
     "tags": []
@@ -1970,15 +1844,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8b098477",
+   "id": "db71a8d3",
    "metadata": {
     "_cell_guid": "5de2aed1-b091-4a0b-8afa-47af45170799",
     "_uuid": "6481b2b1-a961-4ad9-b11c-b4700a1bc1e8",
     "papermill": {
-     "duration": 0.026915,
-     "end_time": "2024-03-12T03:34:02.703900",
+     "duration": 0.014917,
+     "end_time": "2024-03-13T05:55:17.629926",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.676985",
+     "start_time": "2024-03-13T05:55:17.615009",
      "status": "completed"
     },
     "tags": []
@@ -1991,66 +1865,66 @@
   },
   {
    "cell_type": "markdown",
-   "id": "bcf91cf8",
+   "id": "b45a933a",
    "metadata": {
     "_cell_guid": "a8219ba6-4bc4-45f3-961b-f6b60a1463f5",
     "_uuid": "31b69cf3-a773-42fe-bb23-5dcabb2346f2",
     "papermill": {
-     "duration": 0.026938,
-     "end_time": "2024-03-12T03:34:02.757583",
+     "duration": 0.015293,
+     "end_time": "2024-03-13T05:55:17.660138",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.730645",
+     "start_time": "2024-03-13T05:55:17.644845",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "**2. Choose your tools.**\n",
+    "**2. Choosing tools for analysis**\n",
     "\n",
     "In conducting data clean up and preparation for further analysis I will be using R."
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "5fd696d1",
+   "id": "bd6dbe58",
    "metadata": {
     "_cell_guid": "f2210326-86cc-4904-922e-f224817a2fba",
     "_uuid": "0a095947-0ab0-4c66-aad9-58b4a0ff42df",
     "papermill": {
-     "duration": 0.026648,
-     "end_time": "2024-03-12T03:34:02.812520",
+     "duration": 0.015924,
+     "end_time": "2024-03-13T05:55:17.691201",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.785872",
+     "start_time": "2024-03-13T05:55:17.675277",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "**3. Transform the data to work effectively with it.**"
+    "**3. Transforming the data to work effectively with it**"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
-   "id": "bb7b351f",
+   "execution_count": 19,
+   "id": "f475e147",
    "metadata": {
     "_cell_guid": "825f08bf-c1c0-45bc-adc5-0c2383e80a28",
     "_uuid": "1ee9669b-0a74-49f8-8228-34594b7b2b59",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:02.871964Z",
-     "iopub.status.busy": "2024-03-12T03:34:02.869016Z",
-     "iopub.status.idle": "2024-03-12T03:34:04.119277Z",
-     "shell.execute_reply": "2024-03-12T03:34:04.116597Z"
+     "iopub.execute_input": "2024-03-13T05:55:17.725130Z",
+     "iopub.status.busy": "2024-03-13T05:55:17.723718Z",
+     "iopub.status.idle": "2024-03-13T05:55:18.525282Z",
+     "shell.execute_reply": "2024-03-13T05:55:18.523866Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 1.284282,
-     "end_time": "2024-03-12T03:34:04.123162",
+     "duration": 0.820317,
+     "end_time": "2024-03-13T05:55:18.526988",
      "exception": false,
-     "start_time": "2024-03-12T03:34:02.838880",
+     "start_time": "2024-03-13T05:55:17.706671",
      "status": "completed"
     },
     "tags": []
@@ -2075,26 +1949,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
-   "id": "882f3fdb",
+   "execution_count": 20,
+   "id": "7d5a15dc",
    "metadata": {
     "_cell_guid": "5b219705-2203-48a4-a155-5347093777da",
     "_uuid": "f0dd7563-be37-43fa-a018-558e83a93b3e",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:04.181247Z",
-     "iopub.status.busy": "2024-03-12T03:34:04.179233Z",
-     "iopub.status.idle": "2024-03-12T03:34:05.062625Z",
-     "shell.execute_reply": "2024-03-12T03:34:05.060411Z"
+     "iopub.execute_input": "2024-03-13T05:55:18.561326Z",
+     "iopub.status.busy": "2024-03-13T05:55:18.560066Z",
+     "iopub.status.idle": "2024-03-13T05:55:19.056476Z",
+     "shell.execute_reply": "2024-03-13T05:55:19.055146Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.91531,
-     "end_time": "2024-03-12T03:34:05.065484",
+     "duration": 0.51591,
+     "end_time": "2024-03-13T05:55:19.058864",
      "exception": false,
-     "start_time": "2024-03-12T03:34:04.150174",
+     "start_time": "2024-03-13T05:55:18.542954",
      "status": "completed"
     },
     "tags": []
@@ -2127,15 +2001,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "ea34321b",
+   "id": "8ea409dc",
    "metadata": {
     "_cell_guid": "f76d1862-1a1f-4275-ac62-f6925dfe7fbe",
     "_uuid": "701f25e4-286d-45dc-ba7a-f35588665275",
     "papermill": {
-     "duration": 0.029695,
-     "end_time": "2024-03-12T03:34:05.121906",
+     "duration": 0.016044,
+     "end_time": "2024-03-13T05:55:19.090189",
      "exception": false,
-     "start_time": "2024-03-12T03:34:05.092211",
+     "start_time": "2024-03-13T05:55:19.074145",
      "status": "completed"
     },
     "tags": []
@@ -2146,26 +2020,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
-   "id": "7ccfb17e",
+   "execution_count": 21,
+   "id": "9a0cc37b",
    "metadata": {
     "_cell_guid": "f78b36bd-3988-458b-99d7-2901a505fd1f",
     "_uuid": "1eac4e01-e552-4bf7-990b-a14ec5bdc5b0",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:05.179326Z",
-     "iopub.status.busy": "2024-03-12T03:34:05.177255Z",
-     "iopub.status.idle": "2024-03-12T03:34:11.254501Z",
-     "shell.execute_reply": "2024-03-12T03:34:11.251501Z"
+     "iopub.execute_input": "2024-03-13T05:55:19.123385Z",
+     "iopub.status.busy": "2024-03-13T05:55:19.122075Z",
+     "iopub.status.idle": "2024-03-13T05:55:22.302057Z",
+     "shell.execute_reply": "2024-03-13T05:55:22.300628Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 6.111011,
-     "end_time": "2024-03-12T03:34:11.259311",
+     "duration": 3.199067,
+     "end_time": "2024-03-13T05:55:22.304177",
      "exception": false,
-     "start_time": "2024-03-12T03:34:05.148300",
+     "start_time": "2024-03-13T05:55:19.105110",
      "status": "completed"
     },
     "tags": []
@@ -2181,15 +2055,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "997ff391",
+   "id": "f1f5e8e5",
    "metadata": {
     "_cell_guid": "5a265b63-29f8-4d5d-81c1-d575c9427ab5",
     "_uuid": "51afe8a2-0ec1-42c2-af46-c04226c8b040",
     "papermill": {
-     "duration": 0.026439,
-     "end_time": "2024-03-12T03:34:11.314029",
+     "duration": 0.01549,
+     "end_time": "2024-03-13T05:55:22.335645",
      "exception": false,
-     "start_time": "2024-03-12T03:34:11.287590",
+     "start_time": "2024-03-13T05:55:22.320155",
      "status": "completed"
     },
     "tags": []
@@ -2200,26 +2074,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
-   "id": "bf186172",
+   "execution_count": 22,
+   "id": "0481af39",
    "metadata": {
     "_cell_guid": "d0ee2000-aa87-45c5-9c64-e758593eacf2",
     "_uuid": "d737caf5-bea1-4db9-b1e0-01a73a27baf6",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:11.371548Z",
-     "iopub.status.busy": "2024-03-12T03:34:11.369586Z",
-     "iopub.status.idle": "2024-03-12T03:34:11.427011Z",
-     "shell.execute_reply": "2024-03-12T03:34:11.424637Z"
+     "iopub.execute_input": "2024-03-13T05:55:22.371052Z",
+     "iopub.status.busy": "2024-03-13T05:55:22.369695Z",
+     "iopub.status.idle": "2024-03-13T05:55:22.402792Z",
+     "shell.execute_reply": "2024-03-13T05:55:22.401199Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.08967,
-     "end_time": "2024-03-12T03:34:11.430009",
+     "duration": 0.053638,
+     "end_time": "2024-03-13T05:55:22.405006",
      "exception": false,
-     "start_time": "2024-03-12T03:34:11.340339",
+     "start_time": "2024-03-13T05:55:22.351368",
      "status": "completed"
     },
     "tags": []
@@ -2233,26 +2107,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
-   "id": "308184d4",
+   "execution_count": 23,
+   "id": "3134242c",
    "metadata": {
     "_cell_guid": "30191ab6-66a9-4122-81c9-3d078a2ea878",
     "_uuid": "b2714c9a-55ad-458e-b3bf-7e19aa91834f",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:11.487832Z",
-     "iopub.status.busy": "2024-03-12T03:34:11.485714Z",
-     "iopub.status.idle": "2024-03-12T03:34:11.539758Z",
-     "shell.execute_reply": "2024-03-12T03:34:11.536875Z"
+     "iopub.execute_input": "2024-03-13T05:55:22.441645Z",
+     "iopub.status.busy": "2024-03-13T05:55:22.440105Z",
+     "iopub.status.idle": "2024-03-13T05:55:22.475293Z",
+     "shell.execute_reply": "2024-03-13T05:55:22.473563Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.086013,
-     "end_time": "2024-03-12T03:34:11.542536",
+     "duration": 0.056433,
+     "end_time": "2024-03-13T05:55:22.477378",
      "exception": false,
-     "start_time": "2024-03-12T03:34:11.456523",
+     "start_time": "2024-03-13T05:55:22.420945",
      "status": "completed"
     },
     "tags": []
@@ -2289,45 +2163,45 @@
   },
   {
    "cell_type": "markdown",
-   "id": "9e33bc42",
+   "id": "11611dd0",
    "metadata": {
     "_cell_guid": "8d3afe6e-fcf1-4e34-a148-372d316b8f88",
     "_uuid": "9582de99-2979-4135-83d4-2fdaa3307d25",
     "papermill": {
-     "duration": 0.026552,
-     "end_time": "2024-03-12T03:34:11.595434",
+     "duration": 0.016977,
+     "end_time": "2024-03-13T05:55:22.509692",
      "exception": false,
-     "start_time": "2024-03-12T03:34:11.568882",
+     "start_time": "2024-03-13T05:55:22.492715",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "* Converting \"ride_length\" from Factor to numeric so we can run calculations on the data"
+    "* Converting \"ride_length\" from factor to numeric so we can run calculations on the data"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
-   "id": "6afca8e3",
+   "execution_count": 24,
+   "id": "99ca76f5",
    "metadata": {
     "_cell_guid": "10b7de71-5f1f-4ae9-9df4-841cb2a4209d",
     "_uuid": "dd9ab4f3-03b2-4f83-b217-da110819f204",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:11.653985Z",
-     "iopub.status.busy": "2024-03-12T03:34:11.651839Z",
-     "iopub.status.idle": "2024-03-12T03:34:17.078320Z",
-     "shell.execute_reply": "2024-03-12T03:34:17.076130Z"
+     "iopub.execute_input": "2024-03-13T05:55:22.545661Z",
+     "iopub.status.busy": "2024-03-13T05:55:22.544026Z",
+     "iopub.status.idle": "2024-03-13T05:55:25.996355Z",
+     "shell.execute_reply": "2024-03-13T05:55:25.994982Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 5.458991,
-     "end_time": "2024-03-12T03:34:17.081501",
+     "duration": 3.47309,
+     "end_time": "2024-03-13T05:55:25.998786",
      "exception": false,
-     "start_time": "2024-03-12T03:34:11.622510",
+     "start_time": "2024-03-13T05:55:22.525696",
      "status": "completed"
     },
     "tags": []
@@ -2378,15 +2252,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d76ff4af",
+   "id": "ba736246",
    "metadata": {
     "_cell_guid": "713dbaf4-f1e6-4351-905a-f06227a73c44",
     "_uuid": "7c12507a-bc30-4567-8c88-d69225023be7",
     "papermill": {
-     "duration": 0.027909,
-     "end_time": "2024-03-12T03:34:17.136837",
+     "duration": 0.015829,
+     "end_time": "2024-03-13T05:55:26.030696",
      "exception": false,
-     "start_time": "2024-03-12T03:34:17.108928",
+     "start_time": "2024-03-13T05:55:26.014867",
      "status": "completed"
     },
     "tags": []
@@ -2397,26 +2271,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
-   "id": "2ecd72e0",
+   "execution_count": 25,
+   "id": "9584171c",
    "metadata": {
     "_cell_guid": "996589a9-f331-4a31-a702-54c3adb1790f",
     "_uuid": "d7adb4c6-17c7-47bd-850a-c4aa94ae1e65",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:17.194750Z",
-     "iopub.status.busy": "2024-03-12T03:34:17.192791Z",
-     "iopub.status.idle": "2024-03-12T03:34:17.224184Z",
-     "shell.execute_reply": "2024-03-12T03:34:17.221310Z"
+     "iopub.execute_input": "2024-03-13T05:55:26.065741Z",
+     "iopub.status.busy": "2024-03-13T05:55:26.064349Z",
+     "iopub.status.idle": "2024-03-13T05:55:26.082342Z",
+     "shell.execute_reply": "2024-03-13T05:55:26.080869Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.06417,
-     "end_time": "2024-03-12T03:34:17.227607",
+     "duration": 0.037932,
+     "end_time": "2024-03-13T05:55:26.084743",
      "exception": false,
-     "start_time": "2024-03-12T03:34:17.163437",
+     "start_time": "2024-03-13T05:55:26.046811",
      "status": "completed"
     },
     "tags": []
@@ -2449,26 +2323,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
-   "id": "f542630a",
+   "execution_count": 26,
+   "id": "1605284f",
    "metadata": {
     "_cell_guid": "c2abd79d-3303-449e-bda9-84847077d26f",
     "_uuid": "bee3264d-4e8c-4c83-a452-cd487c12ab60",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:17.286853Z",
-     "iopub.status.busy": "2024-03-12T03:34:17.284657Z",
-     "iopub.status.idle": "2024-03-12T03:34:19.362688Z",
-     "shell.execute_reply": "2024-03-12T03:34:19.360441Z"
+     "iopub.execute_input": "2024-03-13T05:55:26.119886Z",
+     "iopub.status.busy": "2024-03-13T05:55:26.118529Z",
+     "iopub.status.idle": "2024-03-13T05:55:27.381614Z",
+     "shell.execute_reply": "2024-03-13T05:55:27.380026Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 2.111478,
-     "end_time": "2024-03-12T03:34:19.366626",
+     "duration": 1.282543,
+     "end_time": "2024-03-13T05:55:27.383482",
      "exception": false,
-     "start_time": "2024-03-12T03:34:17.255148",
+     "start_time": "2024-03-13T05:55:26.100939",
      "status": "completed"
     },
     "tags": []
@@ -2484,15 +2358,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3fffdeac",
+   "id": "c5146bdd",
    "metadata": {
     "_cell_guid": "34c0ef7b-b55b-4caa-b461-77126677a3d4",
     "_uuid": "fc2aa41c-7851-4488-895e-ff5157b76280",
     "papermill": {
-     "duration": 0.028034,
-     "end_time": "2024-03-12T03:34:19.422583",
+     "duration": 0.016929,
+     "end_time": "2024-03-13T05:55:27.416217",
      "exception": false,
-     "start_time": "2024-03-12T03:34:19.394549",
+     "start_time": "2024-03-13T05:55:27.399288",
      "status": "completed"
     },
     "tags": []
@@ -2500,35 +2374,35 @@
    "source": [
     "# Step 4: Analyze\n",
     "\n",
-    "Key tasks:\n",
+    "Key stages:\n",
     "\n",
-    "**1. Perform calculations; organize and format data.**\n",
+    "**1. Performing calculations; organizing and formating data**\n",
     " \n",
     "*  Implementing descriptive analysis of the *ride_length* column (figures are in seconds)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
-   "id": "8873d92e",
+   "execution_count": 27,
+   "id": "097ea7cf",
    "metadata": {
     "_cell_guid": "8cdb481d-17ef-4bd4-8b49-bd8352a7cf93",
     "_uuid": "7a072165-c665-42a3-aa81-d3dac86fc380",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:19.481930Z",
-     "iopub.status.busy": "2024-03-12T03:34:19.480097Z",
-     "iopub.status.idle": "2024-03-12T03:34:19.654370Z",
-     "shell.execute_reply": "2024-03-12T03:34:19.651468Z"
+     "iopub.execute_input": "2024-03-13T05:55:27.453530Z",
+     "iopub.status.busy": "2024-03-13T05:55:27.452108Z",
+     "iopub.status.idle": "2024-03-13T05:55:27.574456Z",
+     "shell.execute_reply": "2024-03-13T05:55:27.573101Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.208523,
-     "end_time": "2024-03-12T03:34:19.658455",
+     "duration": 0.143402,
+     "end_time": "2024-03-13T05:55:27.576296",
      "exception": false,
-     "start_time": "2024-03-12T03:34:19.449932",
+     "start_time": "2024-03-13T05:55:27.432894",
      "status": "completed"
     },
     "tags": []
@@ -2616,26 +2490,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
-   "id": "73575f19",
+   "execution_count": 28,
+   "id": "426ddbe9",
    "metadata": {
     "_cell_guid": "b0e5e1a2-6031-462c-932d-672edd3bc2a8",
     "_uuid": "c1959c0c-52d2-4932-9a43-5d5bd0f075bd",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:19.720972Z",
-     "iopub.status.busy": "2024-03-12T03:34:19.718990Z",
-     "iopub.status.idle": "2024-03-12T03:34:19.994854Z",
-     "shell.execute_reply": "2024-03-12T03:34:19.992241Z"
+     "iopub.execute_input": "2024-03-13T05:55:27.611811Z",
+     "iopub.status.busy": "2024-03-13T05:55:27.610481Z",
+     "iopub.status.idle": "2024-03-13T05:55:27.810786Z",
+     "shell.execute_reply": "2024-03-13T05:55:27.809495Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 0.310933,
-     "end_time": "2024-03-12T03:34:19.998184",
+     "duration": 0.219973,
+     "end_time": "2024-03-13T05:55:27.812631",
      "exception": false,
-     "start_time": "2024-03-12T03:34:19.687251",
+     "start_time": "2024-03-13T05:55:27.592658",
      "status": "completed"
     },
     "tags": []
@@ -2658,47 +2532,47 @@
   },
   {
    "cell_type": "markdown",
-   "id": "7788a0bf",
+   "id": "8cfa059a",
    "metadata": {
     "_cell_guid": "a89e681c-e2f1-4c62-8e7a-c76e422e1cad",
     "_uuid": "ac3991a6-f119-4823-8bb7-0ee2e4f7b548",
     "papermill": {
-     "duration": 0.028361,
-     "end_time": "2024-03-12T03:34:20.054996",
+     "duration": 0.015843,
+     "end_time": "2024-03-13T05:55:27.844669",
      "exception": false,
-     "start_time": "2024-03-12T03:34:20.026635",
+     "start_time": "2024-03-13T05:55:27.828826",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "**2. Aggregate the data to make it useful and accessible.**\n",
+    "**2. Aggregating the data to make it useful and accessible; identifying trends and relationships**\n",
     "\n",
     "* Comparing aggregated data on *ride_length* between casual riders and members by checking min, max, median, and mean"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
-   "id": "7bdc1e0d",
+   "execution_count": 29,
+   "id": "60e4235f",
    "metadata": {
     "_cell_guid": "f6a37503-a0df-4695-bfce-e0ad09467bbb",
     "_uuid": "3dcabae8-33cd-429f-a1ef-ed7d911dc7ff",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:20.116433Z",
-     "iopub.status.busy": "2024-03-12T03:34:20.114472Z",
-     "iopub.status.idle": "2024-03-12T03:34:22.757437Z",
-     "shell.execute_reply": "2024-03-12T03:34:22.754423Z"
+     "iopub.execute_input": "2024-03-13T05:55:27.880745Z",
+     "iopub.status.busy": "2024-03-13T05:55:27.879365Z",
+     "iopub.status.idle": "2024-03-13T05:55:29.032223Z",
+     "shell.execute_reply": "2024-03-13T05:55:29.030824Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 2.677649,
-     "end_time": "2024-03-12T03:34:22.760893",
+     "duration": 1.173136,
+     "end_time": "2024-03-13T05:55:29.034154",
      "exception": false,
-     "start_time": "2024-03-12T03:34:20.083244",
+     "start_time": "2024-03-13T05:55:27.861018",
      "status": "completed"
     },
     "tags": []
@@ -2755,26 +2629,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
-   "id": "9946f044",
+   "execution_count": 30,
+   "id": "dd2cd7f5",
    "metadata": {
     "_cell_guid": "b332a6a2-a8c5-4d98-8fcc-9c3aee550fc4",
     "_uuid": "0aa9780a-15f0-482a-8247-139901308aff",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:22.823173Z",
-     "iopub.status.busy": "2024-03-12T03:34:22.821226Z",
-     "iopub.status.idle": "2024-03-12T03:34:25.561094Z",
-     "shell.execute_reply": "2024-03-12T03:34:25.558316Z"
+     "iopub.execute_input": "2024-03-13T05:55:29.072404Z",
+     "iopub.status.busy": "2024-03-13T05:55:29.071049Z",
+     "iopub.status.idle": "2024-03-13T05:55:30.413092Z",
+     "shell.execute_reply": "2024-03-13T05:55:30.411841Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 2.774934,
-     "end_time": "2024-03-12T03:34:25.564681",
+     "duration": 1.363874,
+     "end_time": "2024-03-13T05:55:30.415281",
      "exception": false,
-     "start_time": "2024-03-12T03:34:22.789747",
+     "start_time": "2024-03-13T05:55:29.051407",
      "status": "completed"
     },
     "tags": []
@@ -2831,26 +2705,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
-   "id": "2845481b",
+   "execution_count": 31,
+   "id": "13596aed",
    "metadata": {
     "_cell_guid": "86a473fe-4535-4f3b-80ec-f38c3a53cbdf",
     "_uuid": "93e065d3-99c8-4cb5-bec2-1a6b4be3d7e7",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:25.629919Z",
-     "iopub.status.busy": "2024-03-12T03:34:25.627828Z",
-     "iopub.status.idle": "2024-03-12T03:34:28.760163Z",
-     "shell.execute_reply": "2024-03-12T03:34:28.757357Z"
+     "iopub.execute_input": "2024-03-13T05:55:30.454606Z",
+     "iopub.status.busy": "2024-03-13T05:55:30.452229Z",
+     "iopub.status.idle": "2024-03-13T05:55:32.096410Z",
+     "shell.execute_reply": "2024-03-13T05:55:32.094930Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 3.169168,
-     "end_time": "2024-03-12T03:34:28.763809",
+     "duration": 1.667046,
+     "end_time": "2024-03-13T05:55:32.098965",
      "exception": false,
-     "start_time": "2024-03-12T03:34:25.594641",
+     "start_time": "2024-03-13T05:55:30.431919",
      "status": "completed"
     },
     "tags": []
@@ -2907,26 +2781,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
-   "id": "61e643c7",
+   "execution_count": 32,
+   "id": "2049d264",
    "metadata": {
     "_cell_guid": "ca57d999-70cd-40bd-8dc5-ce2e853c73a5",
     "_uuid": "7fbf01ad-83f5-4193-9142-a2f62202527d",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:28.827018Z",
-     "iopub.status.busy": "2024-03-12T03:34:28.825115Z",
-     "iopub.status.idle": "2024-03-12T03:34:31.301795Z",
-     "shell.execute_reply": "2024-03-12T03:34:31.298896Z"
+     "iopub.execute_input": "2024-03-13T05:55:32.137698Z",
+     "iopub.status.busy": "2024-03-13T05:55:32.136115Z",
+     "iopub.status.idle": "2024-03-13T05:55:33.181477Z",
+     "shell.execute_reply": "2024-03-13T05:55:33.179556Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 2.512386,
-     "end_time": "2024-03-12T03:34:31.305455",
+     "duration": 1.067023,
+     "end_time": "2024-03-13T05:55:33.183893",
      "exception": false,
-     "start_time": "2024-03-12T03:34:28.793069",
+     "start_time": "2024-03-13T05:55:32.116870",
      "status": "completed"
     },
     "tags": []
@@ -2983,15 +2857,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6ac7d32c",
+   "id": "9a27ea9a",
    "metadata": {
     "_cell_guid": "9e5e49a3-df22-4f06-884a-9c52f09e613a",
     "_uuid": "fa55bccd-cf5c-48a9-99c0-e24ef3a1b727",
     "papermill": {
-     "duration": 0.03017,
-     "end_time": "2024-03-12T03:34:31.365761",
+     "duration": 0.017562,
+     "end_time": "2024-03-13T05:55:33.219143",
      "exception": false,
-     "start_time": "2024-03-12T03:34:31.335591",
+     "start_time": "2024-03-13T05:55:33.201581",
      "status": "completed"
     },
     "tags": []
@@ -3002,26 +2876,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
-   "id": "13ddb7d4",
+   "execution_count": 33,
+   "id": "89e88cc4",
    "metadata": {
     "_cell_guid": "b7ba8ee6-8786-4c39-b832-6d0ca09483c3",
     "_uuid": "3928a205-7721-47a2-b45f-a3b236c0a042",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:31.429353Z",
-     "iopub.status.busy": "2024-03-12T03:34:31.427483Z",
-     "iopub.status.idle": "2024-03-12T03:34:34.632114Z",
-     "shell.execute_reply": "2024-03-12T03:34:34.629838Z"
+     "iopub.execute_input": "2024-03-13T05:55:33.258548Z",
+     "iopub.status.busy": "2024-03-13T05:55:33.257181Z",
+     "iopub.status.idle": "2024-03-13T05:55:34.736492Z",
+     "shell.execute_reply": "2024-03-13T05:55:34.735113Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 3.239854,
-     "end_time": "2024-03-12T03:34:34.634992",
+     "duration": 1.501616,
+     "end_time": "2024-03-13T05:55:34.738343",
      "exception": false,
-     "start_time": "2024-03-12T03:34:31.395138",
+     "start_time": "2024-03-13T05:55:33.236727",
      "status": "completed"
     },
     "tags": []
@@ -3126,26 +3000,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
-   "id": "61d016c3",
+   "execution_count": 34,
+   "id": "2b278b83",
    "metadata": {
     "_cell_guid": "208f1a4d-7698-45ca-a8dc-083b547a9dd9",
     "_uuid": "383d7044-0964-433f-a369-39f95c38bed6",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:34.699847Z",
-     "iopub.status.busy": "2024-03-12T03:34:34.697701Z",
-     "iopub.status.idle": "2024-03-12T03:34:38.256711Z",
-     "shell.execute_reply": "2024-03-12T03:34:38.254400Z"
+     "iopub.execute_input": "2024-03-13T05:55:34.777109Z",
+     "iopub.status.busy": "2024-03-13T05:55:34.775803Z",
+     "iopub.status.idle": "2024-03-13T05:55:36.520822Z",
+     "shell.execute_reply": "2024-03-13T05:55:36.519501Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 3.594792,
-     "end_time": "2024-03-12T03:34:38.259748",
+     "duration": 1.766536,
+     "end_time": "2024-03-13T05:55:36.522686",
      "exception": false,
-     "start_time": "2024-03-12T03:34:34.664956",
+     "start_time": "2024-03-13T05:55:34.756150",
      "status": "completed"
     },
     "tags": []
@@ -3255,47 +3129,45 @@
   },
   {
    "cell_type": "markdown",
-   "id": "81dfba02",
+   "id": "68995d06",
    "metadata": {
     "_cell_guid": "3c382a9f-ab4a-4db9-982d-94d75cba2b49",
     "_uuid": "a99c3348-2b2d-4818-8845-473dfb31401e",
     "papermill": {
-     "duration": 0.029843,
-     "end_time": "2024-03-12T03:34:38.319530",
+     "duration": 0.017637,
+     "end_time": "2024-03-13T05:55:36.558240",
      "exception": false,
-     "start_time": "2024-03-12T03:34:38.289687",
+     "start_time": "2024-03-13T05:55:36.540603",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "**3.Identify trends and relationships.**\n",
-    "\n",
     "* Analyzing ridership data by type and weekday"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
-   "id": "802ca8a2",
+   "execution_count": 35,
+   "id": "c4fb2021",
    "metadata": {
     "_cell_guid": "7fbb600d-2225-4df6-bbda-bb2149bb4c6d",
     "_uuid": "93f0bc28-786e-47a8-b724-7e003192e4c5",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:38.386727Z",
-     "iopub.status.busy": "2024-03-12T03:34:38.384692Z",
-     "iopub.status.idle": "2024-03-12T03:34:42.841542Z",
-     "shell.execute_reply": "2024-03-12T03:34:42.838738Z"
+     "iopub.execute_input": "2024-03-13T05:55:36.596036Z",
+     "iopub.status.busy": "2024-03-13T05:55:36.594776Z",
+     "iopub.status.idle": "2024-03-13T05:55:39.455359Z",
+     "shell.execute_reply": "2024-03-13T05:55:39.452672Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 4.495514,
-     "end_time": "2024-03-12T03:34:42.845401",
+     "duration": 2.882744,
+     "end_time": "2024-03-13T05:55:39.458158",
      "exception": false,
-     "start_time": "2024-03-12T03:34:38.349887",
+     "start_time": "2024-03-13T05:55:36.575414",
      "status": "completed"
     },
     "tags": []
@@ -3413,15 +3285,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "11022cac",
+   "id": "403359a6",
    "metadata": {
     "_cell_guid": "61e6e8ec-02b6-4667-8206-d7d64850e647",
     "_uuid": "e5572701-d61a-4162-8157-bf99b96d98e0",
     "papermill": {
-     "duration": 0.030394,
-     "end_time": "2024-03-12T03:34:42.906457",
+     "duration": 0.018073,
+     "end_time": "2024-03-13T05:55:39.494179",
      "exception": false,
-     "start_time": "2024-03-12T03:34:42.876063",
+     "start_time": "2024-03-13T05:55:39.476106",
      "status": "completed"
     },
     "tags": []
@@ -3429,35 +3301,35 @@
    "source": [
     "# Step 5: Share\n",
     "\n",
-    "Key tasks:\n",
+    "Key stages:\n",
     "\n",
-    "**1.Determine the best way to share your findings.**\n",
+    "**1.Determining the best way to share findings**\n",
     "\n",
     "* Now that we have summary analysis, as well as infomration on ride trends by usertype and days of the week, we may proceed to creation of visuals.\n",
     "\n",
-    "**2.Create effective data visualizations.**\n",
+    "**2.Creating effective data visualizations**\n",
     "\n",
     "* Let's visualize the percentage share of riders by user type"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
-   "id": "f91899a7",
+   "execution_count": 36,
+   "id": "60191864",
    "metadata": {
     "_cell_guid": "877f1943-2d7a-4f60-bad2-977c70382aff",
     "_uuid": "6455f39e-be0b-42fc-aae3-24b885973277",
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:42.971975Z",
-     "iopub.status.busy": "2024-03-12T03:34:42.970122Z",
-     "iopub.status.idle": "2024-03-12T03:34:43.748214Z",
-     "shell.execute_reply": "2024-03-12T03:34:43.745971Z"
+     "iopub.execute_input": "2024-03-13T05:55:39.532130Z",
+     "iopub.status.busy": "2024-03-13T05:55:39.530823Z",
+     "iopub.status.idle": "2024-03-13T05:55:40.125037Z",
+     "shell.execute_reply": "2024-03-13T05:55:40.123002Z"
     },
     "papermill": {
-     "duration": 0.81388,
-     "end_time": "2024-03-12T03:34:43.750954",
+     "duration": 0.615941,
+     "end_time": "2024-03-13T05:55:40.127573",
      "exception": false,
-     "start_time": "2024-03-12T03:34:42.937074",
+     "start_time": "2024-03-13T05:55:39.511632",
      "status": "completed"
     },
     "tags": []
@@ -3495,15 +3367,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "eb631ff7",
+   "id": "685c90c6",
    "metadata": {
     "_cell_guid": "4da0f34b-d63d-456f-8c47-8d9a1802826f",
     "_uuid": "753df182-8a39-43ae-8188-922d93a7794b",
     "papermill": {
-     "duration": 0.031605,
-     "end_time": "2024-03-12T03:34:43.813420",
+     "duration": 0.018676,
+     "end_time": "2024-03-13T05:55:40.165611",
      "exception": false,
-     "start_time": "2024-03-12T03:34:43.781815",
+     "start_time": "2024-03-13T05:55:40.146935",
      "status": "completed"
     },
     "tags": []
@@ -3515,27 +3387,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
-   "id": "6284e7a9",
+   "execution_count": 37,
+   "id": "85cd2c35",
    "metadata": {
     "_cell_guid": "ff521e39-11e7-4969-80fb-e0469b76282c",
     "_kg_hide-output": false,
     "_uuid": "e77f7fb6-5079-460b-8096-76d6789becf5",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:43.880937Z",
-     "iopub.status.busy": "2024-03-12T03:34:43.878978Z",
-     "iopub.status.idle": "2024-03-12T03:34:48.504493Z",
-     "shell.execute_reply": "2024-03-12T03:34:48.501414Z"
+     "iopub.execute_input": "2024-03-13T05:55:40.205744Z",
+     "iopub.status.busy": "2024-03-13T05:55:40.204394Z",
+     "iopub.status.idle": "2024-03-13T05:55:43.260203Z",
+     "shell.execute_reply": "2024-03-13T05:55:43.258144Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 4.663118,
-     "end_time": "2024-03-12T03:34:48.508121",
+     "duration": 3.078477,
+     "end_time": "2024-03-13T05:55:43.262694",
      "exception": false,
-     "start_time": "2024-03-12T03:34:43.845003",
+     "start_time": "2024-03-13T05:55:40.184217",
      "status": "completed"
     },
     "tags": []
@@ -3581,15 +3453,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2920962b",
+   "id": "cbf70355",
    "metadata": {
     "_cell_guid": "462bb674-5dd7-460a-8833-eed3dfb69e57",
     "_uuid": "f228c854-d619-411f-a740-5b270ff005d5",
     "papermill": {
-     "duration": 0.033327,
-     "end_time": "2024-03-12T03:34:48.573834",
+     "duration": 0.018308,
+     "end_time": "2024-03-13T05:55:43.299259",
      "exception": false,
-     "start_time": "2024-03-12T03:34:48.540507",
+     "start_time": "2024-03-13T05:55:43.280951",
      "status": "completed"
     },
     "tags": []
@@ -3601,26 +3473,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 41,
-   "id": "b7ca0c93",
+   "execution_count": 38,
+   "id": "94effe13",
    "metadata": {
     "_cell_guid": "5b85ee8d-6607-4663-ae99-a39898b7e9cd",
     "_uuid": "b498a93d-6399-4a9f-9d20-4bb30dc7a201",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:48.642143Z",
-     "iopub.status.busy": "2024-03-12T03:34:48.640319Z",
-     "iopub.status.idle": "2024-03-12T03:34:53.653337Z",
-     "shell.execute_reply": "2024-03-12T03:34:53.649853Z"
+     "iopub.execute_input": "2024-03-13T05:55:43.339337Z",
+     "iopub.status.busy": "2024-03-13T05:55:43.338125Z",
+     "iopub.status.idle": "2024-03-13T05:55:46.577493Z",
+     "shell.execute_reply": "2024-03-13T05:55:46.576310Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 5.051753,
-     "end_time": "2024-03-12T03:34:53.657556",
+     "duration": 3.262415,
+     "end_time": "2024-03-13T05:55:46.580030",
      "exception": false,
-     "start_time": "2024-03-12T03:34:48.605803",
+     "start_time": "2024-03-13T05:55:43.317615",
      "status": "completed"
     },
     "tags": []
@@ -3666,46 +3538,46 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3df9ab46",
+   "id": "d3226a3e",
    "metadata": {
     "_cell_guid": "bb3b8ae3-a083-4074-9bbe-76269dd49d77",
     "_uuid": "8f78da01-5813-4559-97b4-f0e1444a68df",
     "papermill": {
-     "duration": 0.034458,
-     "end_time": "2024-03-12T03:34:53.725579",
+     "duration": 0.019423,
+     "end_time": "2024-03-13T05:55:46.619742",
      "exception": false,
-     "start_time": "2024-03-12T03:34:53.691121",
+     "start_time": "2024-03-13T05:55:46.600319",
      "status": "completed"
     },
     "tags": []
    },
    "source": [
-    "* Here we can observe similar trend in rides between members and casual users during specific months of the year. Both user types generally ride more during warmer months - from April to October. The lowest number of rides can be observed during months of January and February for both user types, assuming that Chicago weather might not be very comfotable for rides during winter months.\n",
+    "* Here we can observe similar trend in rides between members and casual users during specific months of the year. Both user types generally ride more during warmer months - from April to October. The lowest number of rides can be observed during months of January and February for both user types, assuming that Chicago weather might not be very comfortable for rides during winter months.\n",
     "* Finally, let's visualize average duration of rides"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
-   "id": "cc9532b4",
+   "execution_count": 39,
+   "id": "516dbb90",
    "metadata": {
     "_cell_guid": "d7850ba3-6d8c-449f-a2dd-dc8d192e7671",
     "_uuid": "fb428897-aa66-4e8c-bf84-9873a62865dd",
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2024-03-12T03:34:53.798707Z",
-     "iopub.status.busy": "2024-03-12T03:34:53.796647Z",
-     "iopub.status.idle": "2024-03-12T03:34:58.393231Z",
-     "shell.execute_reply": "2024-03-12T03:34:58.391007Z"
+     "iopub.execute_input": "2024-03-13T05:55:46.661783Z",
+     "iopub.status.busy": "2024-03-13T05:55:46.660376Z",
+     "iopub.status.idle": "2024-03-13T05:55:49.655314Z",
+     "shell.execute_reply": "2024-03-13T05:55:49.654090Z"
     },
     "jupyter": {
      "outputs_hidden": false
     },
     "papermill": {
-     "duration": 4.636959,
-     "end_time": "2024-03-12T03:34:58.396213",
+     "duration": 3.018986,
+     "end_time": "2024-03-13T05:55:49.657908",
      "exception": false,
-     "start_time": "2024-03-12T03:34:53.759254",
+     "start_time": "2024-03-13T05:55:46.638922",
      "status": "completed"
     },
     "tags": []
@@ -3751,15 +3623,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "18f92f5b",
+   "id": "fb55b14a",
    "metadata": {
     "_cell_guid": "be1e0258-e760-4c41-b788-9dae5b344727",
     "_uuid": "a07fa47a-6516-4abb-b3b9-b30a0f3f6cd5",
     "papermill": {
-     "duration": 0.03618,
-     "end_time": "2024-03-12T03:34:58.468934",
+     "duration": 0.020133,
+     "end_time": "2024-03-13T05:55:49.698039",
      "exception": false,
-     "start_time": "2024-03-12T03:34:58.432754",
+     "start_time": "2024-03-13T05:55:49.677906",
      "status": "completed"
     },
     "tags": []
@@ -3770,15 +3642,15 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b51a1e01",
+   "id": "22e8de8f",
    "metadata": {
     "_cell_guid": "6389d203-3b69-4469-b1bf-48676562a3d6",
     "_uuid": "66b5f384-04fd-40dd-8402-f044775c9fdd",
     "papermill": {
-     "duration": 0.034514,
-     "end_time": "2024-03-12T03:34:58.538880",
+     "duration": 0.01989,
+     "end_time": "2024-03-13T05:55:49.738024",
      "exception": false,
-     "start_time": "2024-03-12T03:34:58.504366",
+     "start_time": "2024-03-13T05:55:49.718134",
      "status": "completed"
     },
     "tags": []
@@ -3786,9 +3658,9 @@
    "source": [
     "# Step 6: Act\n",
     "\n",
-    "Key tasks:\n",
+    "Key stages:\n",
     "\n",
-    "**Provide top three recommendations based on the analysis.**\n",
+    "**Providing top three recommendations based on the analysis**\n",
     "\n",
     "After analysis and visualisation of data the main noticeable insights are as following:\n",
     "\n",
@@ -3836,14 +3708,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 96.392449,
-   "end_time": "2024-03-12T03:34:58.899293",
+   "duration": 58.367279,
+   "end_time": "2024-03-13T05:55:49.978873",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2024-03-12T03:33:22.506844",
+   "start_time": "2024-03-13T05:54:51.611594",
    "version": "2.5.0"
   }
  },
