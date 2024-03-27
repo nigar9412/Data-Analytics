@@ -1,4 +1,4 @@
-* 👋 Hi, I’m @nigar9412
+* 👋 Hi, I’m Nigar
 * 👀 I’m interested in data analytics
 * 🌱 I’m currently learning Python, R, SQL
 * 💞️ I’m looking to collaborate on projects requiring data analysis
